@@ -4,7 +4,10 @@
             <div class="col-lg-4 col-md-6 col-sm-7">
                 <div class="footer__about">
                     <div class="footer__logo">
-                        <a href="./index.html">LOGO</a>
+                        <a href="http://localhost/wordpress">
+                            <img src="<?php echo get_theme_file_uri( 'images/logo2.png' ) ?>" alt="Logo Shoper"
+                                style="max-width: 40%">
+                        </a>
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                         cilisis.</p>
