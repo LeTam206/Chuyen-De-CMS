@@ -7,7 +7,10 @@ add_action('wp_enqueue_scripts', 'my_files');
 add_action('woocommerce_product_options_general_product_data', 'woo_add_custom_general_fields');
 // Save Fields
 add_action('woocommerce_process_product_meta', 'woo_add_custom_general_fields_save');
+<<<<<<< HEAD
 add_action('woocommerce_new_product', 'notify_subscribers_on_new_product');
+=======
+>>>>>>> 6862e1161daf7a3548a7629159b6b5361275b636
 
 function my_theme_support()
 {
@@ -37,6 +40,7 @@ function my_files()
     wp_enqueue_script('script', get_theme_file_uri('/build/index.js'));
 
 }
+<<<<<<< HEAD
 add_action('wp_enqueue_scripts', 'enqueue_subscription_scripts');
 function enqueue_subscription_scripts() {
     wp_enqueue_script('custom-subscription-script', get_template_directory_uri() . '/js/custom-subscription-script.js', array('jquery'), '', true);
@@ -87,6 +91,8 @@ function notify_subscribers_on_new_product($product_id) {
 
 
 // Hook để thực hiện hành động khi thêm sản phẩm mới
+=======
+>>>>>>> 6862e1161daf7a3548a7629159b6b5361275b636
 
 function woo_add_custom_general_fields()
 {
