@@ -1,0 +1,60 @@
+a.added_to_cart.wc-forward {
+    display: none;
+}
+
+.blog .blog-header .title{
+    font-family: 'Abril Fatface', serif;
+}
+
+.blog .blog-header .desc{
+    font-family: 'Bellefair', serif;
+    font-size: 18px;
+    max-width: 25rem;
+}
+
+.blog-posts img{
+    width: 355px;
+    height: 237px;
+}
+
+.blog-posts .author{
+    font-size: 0.85rem !important;
+}
+
+.blog-posts .date{
+    font-size: 0.85rem !important;
+}
+
+.blog-posts .short-desc{
+    font-size: 0.85rem !important;
+}
+
+.blog-posts .btn-read{
+    font-size: 0.85rem !important;
+    
+}
+
+.header-au{
+    background-image: url(./images/background-about-us.jpeg);
+    
+    background-size: cover;
+}
+
+.header-au .title{
+    padding-top: 15rem;
+    padding-bottom: 21rem;
+    
+}
+
+.header-au .title h2{
+    font-size: 55px;
+    
+}
+
+.about-us-content h2{
+    font-family: 'Petit Formal Script', cursive;
+}
+
+.about-us-content p{
+    font-size: 15px;
+}

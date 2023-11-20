@@ -6,12 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head() ?>
-    <title><?php echo bloginfo('name') ?></title>
+    <title>
+        <?php echo bloginfo('name') ?>
+    </title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
     <link rel="stylesheet" href="<?php echo get_theme_file_uri('css/bootstrap.min.css') ?>" type="text/css">
@@ -22,6 +30,7 @@
     <link rel="stylesheet" href="<?php echo get_theme_file_uri('css/owl.carousel.min.css') ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo get_theme_file_uri('css/slicknav.min.css') ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo get_theme_file_uri('css/style.css') ?>" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="<?php echo get_theme_file_uri('style.css') ?>">
 
 </head>
@@ -37,15 +46,20 @@
                     <!-- <div class="tip">2</div> -->
                 </a></li>
             <li><a href="http://localhost/wordpress/cart"><span class="icon_bag_alt"></span>
-                    <?php 
-                $cart = WC()->cart; 
-                if($cart->get_cart_contents_count() > 0){ ?>
-                    <div class="tip"><?php echo $cart->get_cart_contents_count() ?></div>
+                    <?php
+                    $cart = WC()->cart;
+                    if ($cart->get_cart_contents_count() > 0) { ?>
+                        <div class="tip">
+                            <?php echo $cart->get_cart_contents_count() ?>
+                        </div>
                     <?php } ?>
                 </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="#"><img src="" alt=""></a>
+            <a href="#">
+                <img src="<?php echo get_theme_file_uri('images/logo2.png') ?>" alt="Logo Shoper"
+                    style="max-width: 40%">
+            </a>
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__auth">
@@ -62,27 +76,21 @@
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
                         <a href="http://localhost/wordpress">
-                            <img src="<?php echo get_theme_file_uri( 'images/logo2.png' ) ?>" alt="Logo Shoper"
-                                style="max-width: 40%">
+                            <img src="<?php echo get_theme_file_uri('images/logo2.png') ?>" alt="Logo Shoper">
                         </a>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-7">
+                <div class="col-xl-6 col-lg-7 text-center">
                     <nav class="header__menu">
-                        <ul>
-                            <li class="active"><a href="http://localhost/wordpress">Home</a></li>
-                            <li><a href="http://localhost/wordpress/shop">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">Product Details</a></li>
-                                    <li><a href="#">Shop Cart</a></li>
-                                    <li><a href="#">Checkout</a></li>
-                                    <li><a href="#">Blog Details</a></li>
-                                </ul>
-                            </li>
+                        <?php wp_nav_menu(); ?>
+
+                        <!-- <ul>
+                            <li id="menu_item_home" class=""><a href="http://localhost/wordpress">Home</a></li>
+                            <li id="menu_item_shop" class=""><a href="http://localhost/wordpress/shop">Shop</a></li>
                             <li><a href="#">Blog</a></li>
                             <li><a href="#">Contact</a></li>
-                        </ul>
+                            <li><a href="#">About Us</a></li>
+                        </ul> -->
                     </nav>
                 </div>
                 <div class="col-lg-3">
@@ -96,15 +104,17 @@
                                 <span class="icon_search search_switch"></span>
                             </li>
                             <li><a href="#"><span class="icon_heart_alt"></span>
-                                    <!-- <div class="tip">2</div> -->
+                                    <!-- <div class="tip tip-fav">2</div> -->
                                 </a></li>
                             <li>
                                 <a href="http://localhost/wordpress/cart">
                                     <span class="icon_bag_alt"></span>
-                                    <?php 
-                                    $cart = WC()->cart; 
-                                    if($cart->get_cart_contents_count() > 0) { ?>
-                                    <div class="tip"><?php echo $cart->get_cart_contents_count() ?></div>
+                                    <?php
+                                    $cart = WC()->cart;
+                                    if ($cart->get_cart_contents_count() > 0) { ?>
+                                        <div class="tip tip-cart">
+                                            <?php echo $cart->get_cart_contents_count() ?>
+                                        </div>
                                     <?php } ?>
                                 </a>
                             </li>
@@ -118,3 +128,5 @@
         </div>
     </header>
     <!-- Header Section End -->
+
+    

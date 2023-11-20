@@ -1,3 +1,66 @@
+<!-- Instagram Begin -->
+<div class="instagram">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg"
+                    data-setbg="<?php echo get_theme_file_uri('images/instagram/insta-1.jpg') ?>">
+                    <!-- <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg"
+                    data-setbg="<?php echo get_theme_file_uri('images/instagram/insta-2.jpg') ?>">
+                    <!-- <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg"
+                    data-setbg="<?php echo get_theme_file_uri('images/instagram/insta-3.jpg') ?>">
+                    <!-- <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg"
+                    data-setbg="<?php echo get_theme_file_uri('images/instagram/insta-4.jpg') ?>">
+                    <!-- <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg"
+                    data-setbg="<?php echo get_theme_file_uri('images/instagram/insta-5.jpg') ?>">
+                    <!-- <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
+                <div class="instagram__item set-bg"
+                    data-setbg="<?php echo get_theme_file_uri('images/instagram/insta-6.jpg') ?>">
+                    <!-- <div class="instagram__text">
+                        <i class="fa fa-instagram"></i>
+                        <a href="#">@ ashion_shop</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Instagram End -->
+
 <footer class="footer">
     <div class="container">
         <div class="row">
@@ -5,7 +68,7 @@
                 <div class="footer__about">
                     <div class="footer__logo">
                         <a href="http://localhost/wordpress">
-                            <img src="<?php echo get_theme_file_uri( 'images/logo2.png' ) ?>" alt="Logo Shoper"
+                            <img src="<?php echo get_theme_file_uri('images/logo2.png') ?>" alt="Logo Shoper"
                                 style="max-width: 40%">
                         </a>
                     </div>
@@ -46,15 +109,39 @@
                 <div class="footer__newslatter">
                     <h6>NEWSLETTER</h6>
                     <form action="#">
-                        <input type="text" placeholder="Email">
-                        <button type="submit" class="site-btn">Subscribe</button>
+                        <input type="text" id="email" placeholder="Email">
+                        <button id="subscribe-btn" class="site-btn">Subscribe</button>
+                        <div id="subscription-message"></div>
                     </form>
+                    <script>
+    // Ajax để xử lý đăng ký
+    document.getElementById('subscribe-btn').addEventListener('click', function (e) {
+        e.preventDefault()
+        var email = document.getElementById('email').value;
+        console.log(1);
+
+        // Kiểm tra xem email có hợp lệ không (cần thêm kiểm tra hợp lệ nếu cần)
+        if (email.trim() !== '') {
+            // Gửi request Ajax để xử lý đăng ký
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', ajaxurl, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            xhr.onload = function () {
+                var response = JSON.parse(xhr.responseText);
+                document.getElementById('subscription-message').innerHTML = response.message;
+            };
+            xhr.send('action=subscribe_user&email=' + email);
+        } else {
+            document.getElementById('subscription-message').innerHTML = 'Vui lòng nhập địa chỉ email.';
+        }
+    });
+</script>
                     <div class="footer__social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="https://www.facebook.com/myshoper123/?locale=vi_VN" target="_blank"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-youtube-play"></i></a>
                         <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
+
                     </div>
                 </div>
             </div>
@@ -63,9 +150,11 @@
             <div class="col-lg-12">
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 <div class="footer__copyright__text">
-                    <p>Copyright &copy; <script>
-                        document.write(new Date().getFullYear());
-                        </script> All rights reserved</p>
+                    <p>Copyright &copy;
+                        <script>
+                            document.write(new Date().getFullYear());
+                        </script> All rights reserved
+                    </p>
                 </div>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </div>
@@ -75,17 +164,49 @@
 
 <?php wp_footer(); ?>
 
-<script src="<?php echo get_theme_file_uri( 'js/jquery-3.3.1.min.js' ) ?>"></script>
-<script src="<?php echo get_theme_file_uri( 'js/bootstrap.min.js' ) ?>"></script>
-<script src="<?php echo get_theme_file_uri( 'js/jquery.magnific-popup.min.j' ) ?>s"></script>
-<script src="<?php echo get_theme_file_uri( 'js/jquery-ui.min.js' ) ?>"></script>
-<script src="<?php echo get_theme_file_uri( 'js/mixitup.min.js' ) ?>"></script>
-<script src="<?php echo get_theme_file_uri( 'js/jquery.countdown.min.js' ) ?>"></script>
-<script src="<?php echo get_theme_file_uri( 'js/jquery.slicknav.js' ) ?>"></script>
-<script src="<?php echo get_theme_file_uri( 'js/owl.carousel.min.js' ) ?>"></script>
-<script src="<?php echo get_theme_file_uri( 'js/jquery.nicescroll.min.js' ) ?>"></script>
-<script src="<?php echo get_theme_file_uri( 'js/main.js' ) ?>"></script>
+<script src="<?php echo get_theme_file_uri('js/jquery-3.3.1.min.js') ?>"></script>
+<script src="<?php echo get_theme_file_uri('js/bootstrap.min.js') ?>"></script>
+<script src="<?php echo get_theme_file_uri('js/jquery.magnific-popup.min.j') ?>s"></script>
+<script src="<?php echo get_theme_file_uri('js/jquery-ui.min.js') ?>"></script>
+<script src="<?php echo get_theme_file_uri('js/mixitup.min.js') ?>"></script>
+<script src="<?php echo get_theme_file_uri('js/jquery.countdown.min.js') ?>"></script>
+<script src="<?php echo get_theme_file_uri('js/jquery.slicknav.js') ?>"></script>
+<script src="<?php echo get_theme_file_uri('js/owl.carousel.min.js') ?>"></script>
+<script src="<?php echo get_theme_file_uri('js/jquery.nicescroll.min.js') ?>"></script>
+<script src="<?php echo get_theme_file_uri('js/main.js') ?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+<script>
+
+    // When click button add to cart
+    const arr_add_to_cart_button = document.getElementsByClassName('add_to_cart_button');
+    for (let i = 0; i < arr_add_to_cart_button.length; i++) {
+        const e = arr_add_to_cart_button[i];
+        e.addEventListener('click', function () {
+            // Show toastr success when add cart successfully
+            toastr["success"]("Add to cart successfully!");
+
+        });
+    };
+
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+</script>
 </body>
 
 </html>
