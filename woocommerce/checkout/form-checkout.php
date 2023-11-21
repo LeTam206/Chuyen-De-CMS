@@ -28,6 +28,10 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 }
 
 ?>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3300daceaca8ba71eefc30cc150a53e21ae52cc3
 <div class="container">
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>

@@ -198,6 +198,7 @@ if (is_product()) {
                     }
             }
             ?>
+<<<<<<< HEAD
           <style>
                 .comment_container{
                     display: flex;
@@ -235,6 +236,10 @@ endif;
     </div>
 
 
+=======
+
+        </div>
+>>>>>>> 3300daceaca8ba71eefc30cc150a53e21ae52cc3
     </div>
 </section>
 <!-- Product Details Section End -->
