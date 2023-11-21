@@ -62,7 +62,7 @@
 
 
 <script>
-    const menu_item_aboutus = document.querySelector('.menu_item_aboutus');
+    const menu_item_aboutus = document.querySelector('#menu_item_5248');
     menu_item_aboutus.classList.add('active');
 </script>
 

@@ -97,15 +97,11 @@ $products = wc_get_products($args);
                                     <div class="label sale mt-2 rounded-4" style="z-index: 1">Sale
                                         <?php echo 100 - (number_format($product->sale_price / $product->regular_price * 100, 0)) ?>%
                                     </div>
-                                    <a href="http://localhost/wordpress/product/<?php echo $product->slug ?>">
-                                        <!-- <img src="<?php echo get_theme_file_uri('images/sale-product/' . $product->slug) ?>"
-                                class="product__hover border rounded-4 img_product"> -->
+                                    <a href="<?php echo esc_url(get_permalink($product->id)) ?>">
                                         <img src="<?php echo get_the_post_thumbnail_url($product->id) ?>"
                                             class="product__hover border rounded-4 img_product">
                                     </a>
                                     <ul class="product__hover">
-                                        <!-- <li><a href="http://localhost/wordpress/wp-content/uploads/2023/10/<?php echo $product->slug ?>-1-300x300.jpg" class="image-popup"><span
-                                        class="arrow_expand"></span></a></li> -->
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                         <li>
                                             <a href="?add-to-cart=<?php echo $product->id ?>"
@@ -118,7 +114,7 @@ $products = wc_get_products($args);
 
                                 </div>
                                 <div class="product__item__text pt-0">
-                                    <h6><a href="#">
+                                    <h6><a href="<?php echo esc_url(get_permalink($product->id)) ?>">
                                             <?php echo $product->name ?>
                                         </a></h6>
                                     <div class="rating">
@@ -169,14 +165,12 @@ $products = wc_get_products($args);
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg=''>
                                     <div class="label new mt-2 rounded-4" style="z-index: 1">New</div>
-                                    <a href="http://localhost/wordpress/product/<?php echo $product->slug ?>">
-                                        <!-- <img src="<?php echo get_theme_file_uri('images/new-product/' . $product->slug) ?>"
-                                class="product__hover border rounded-4 img_product"> -->
+                                    <a href="<?php echo esc_url(get_permalink($product->id)) ?>">
                                         <img src="<?php echo get_the_post_thumbnail_url($product->id) ?>"
                                             class="product__hover border rounded-4 img_product">
                                     </a>
                                     <ul class="product__hover">
-                                        <!-- <li><a href="http://localhost/wordpress/wp-content/uploads/2023/10/<?php echo $product->slug ?>-1-300x300.jpg" class="image-popup"><span
+                                        <!-- <li><a href="<?php echo get_the_post_thumbnail_url($product->id) ?>" class="image-popup"><span
                                         class="arrow_expand"></span></a></li> -->
                                         <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                                         <li>
@@ -190,7 +184,7 @@ $products = wc_get_products($args);
 
                                 </div>
                                 <div class="product__item__text pt-0">
-                                    <h6><a href="#">
+                                    <h6><a href="<?php echo esc_url(get_permalink($product->id)) ?>">
                                             <?php echo $product->name ?>
                                         </a></h6>
                                     <div class="rating">
@@ -295,7 +289,7 @@ $products = wc_get_products($args);
 <!-- Services Section End -->
 
 <script>
-    const menu_item_home = document.querySelector('.menu_item_home');
+    const menu_item_home = document.querySelector('#menu_item_5247');
     menu_item_home.classList.add('active');
 </script>
 

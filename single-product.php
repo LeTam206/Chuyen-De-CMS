@@ -27,9 +27,11 @@ if (is_product()) {
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__links">
-                    <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                    <a href="#">SHOP </a>
-                    <span><?php echo $product_title ?></span>
+                    <a href="http://localhost/wordpress/"><i class="fa fa-home"></i> Home</a>
+                    <a href="#">Shop </a>
+                    <span>
+                        <?php echo $product_title ?>
+                    </span>
                 </div>
             </div>
         </div>
@@ -47,14 +49,17 @@ if (is_product()) {
 
                     </div>
                     <div class="product__details__slider__content">
-                    <img src=<?php echo get_the_post_thumbnail($product_id) ?>  >
-                       
+                        <!-- <img src=<?php //echo get_the_post_thumbnail($product_id) ?>> -->
+                        <img src="<?php echo get_the_post_thumbnail_url($product_id) ?>" alt=""
+                            class="border rounded-4">
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 my-auto">
                 <div class="product__details__text">
-                    <h3><?php echo $product_title ?> <span>Brand: SKMEIMore Men Watches from SKMEI</span></h3>
+                    <h3>
+                        <?php echo $product_title ?>
+                    </h3>
                     <div class="rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -63,8 +68,19 @@ if (is_product()) {
                         <i class="fa fa-star"></i>
                         <span>( 138 reviews )</span>
                     </div>
-                    <div class="product__details__price">$ <?php echo $product->sale_price ?><span>$ <?php echo $product->regular_price ?></span></div>
-                    <p><?php echo $product_description ?></p>
+                    <div class="product__details__price">
+                        $
+                        <?php echo $product->price;
+                        if ($product->sale_price != ''):
+                            ?>
+                            <span>$
+                                <?php echo $product->regular_price ?>
+                            </span>
+                        <?php endif ?>
+                    </div>
+                    <p>
+                        <?php //echo $product_description ?>
+                    </p>
                     <div class="product__details__button">
                         <div class="quantity">
                             <span>Quantity:</span>
@@ -72,17 +88,17 @@ if (is_product()) {
                                 <input type="text" value="1">
                             </div>
                         </div>
-                        <a href="?add-to-cart=<?php echo $product->id ?>">
-
-                        <button class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a></button>
+                        <a href="?add-to-cart=<?php echo $product->id ?>" class="site-btn add_to_cart_button ms-2">
+                            <span class="icon_bag_alt"></span> Add to cart
+                            <!-- <button class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a></button> -->
                         </a>
                         <!-- <a href="#" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a> -->
                         <ul>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                            <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
+                            <!-- <li><a href="#"><span class="icon_adjust-horiz"></span></a></li> -->
                         </ul>
                     </div>
-                    <div class="product__details__widget">
+                    <!-- <div class="product__details__widget">
                         <ul>
                             <li>
                                 <span>Availability:</span>
@@ -137,7 +153,7 @@ if (is_product()) {
                                 <p>Free shipping</p>
                             </li>
                         </ul>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-12">
@@ -146,14 +162,16 @@ if (is_product()) {
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
                         </li>
-                       
+
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <h6>Description</h6>
-                            <p><?php echo $product_description ?></p>
+                            <p>
+                                <?php echo $product_description ?>
+                            </p>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
@@ -169,20 +187,40 @@ if (is_product()) {
 
                 foreach ($related_products as $related_product_id) {
                     $related_product = wc_get_product($related_product_id);
-            ?>
+                    ?>
 
                     <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="<?php echo get_the_post_thumbnail_url($related_product_id) ?>">
-                                <div class="label new">New</div>
+                            <div class="product__item__pic set-bg" data-setbg=''>
+                                <?php if ($related_product->sale_price != "") { ?>
+                                    <div class="label sale mt-2 rounded-4" style="z-index: 1">Sale
+                                        <?php echo 100 - (number_format($related_product->sale_price / $related_product->regular_price * 100, 0)) ?>%
+                                    </div>
+                                <?php } elseif (get_post_meta($related_product->id, 'trangthai', true) == 'New') { ?>
+                                    <div class="label new mt-2 rounded-4" style="z-index: 1">New </div>
+                                <?php } ?>
+
+                                <a href="<?php echo esc_url(get_permalink($related_product->id)) ?>">
+                                    <img src="<?php echo get_the_post_thumbnail_url($related_product->id) ?>"
+                                        class="product__hover border rounded-4 img_product">
+                                </a>
                                 <ul class="product__hover">
-                                    <li><a href="img/product/related/rp-1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                                    <!-- <li><a href="http://localhost/wordpress/wp-content/uploads/2023/10/<?php echo $related_product->slug ?>-1-300x300.jpg" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li> -->
                                     <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-                                    <li><a href="#"><span class="icon_bag_alt"></span></a></li>
+                                    <li>
+                                        <a href="?add-to-cart=<?php echo $related_product->id ?>"
+                                            class="product_type_simple add_to_cart_button ajax_add_to_cart" data-quantity="1"
+                                            data-product_id="<?php echo $related_product->id ?>">
+                                            <span class="icon_bag_alt"></span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
-                            <div class="product__item__text">
-                                <h6><a href="#"><?php echo esc_html($related_product->get_title()) ?></a></h6>
+                            <div class="product__item__text pt-0">
+                                <h6><a href="<?php echo esc_url(get_permalink($related_product->id)) ?>">
+                                        <?php echo $related_product->name ?>
+                                    </a></h6>
                                 <div class="rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -190,113 +228,43 @@ if (is_product()) {
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                 </div>
-                                <div class="product__price">$ <?php echo  wc_price($related_product->get_price()) ?></div>
+                                <?php if ($related_product->sale_price != "") { ?>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="product__normalprice text-secondary text-decoration-line-through me-3">$
+                                            <?php echo $related_product->regular_price ?>
+                                        </div>
+                                        <div class="product__price text-danger">$
+                                            <?php echo $related_product->sale_price ?>
+                                        </div>
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="product__price text-danger">$
+                                        <?php echo $related_product->price ?>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
-            <?php
-                    }
+                    <?php
+                }
             }
             ?>
-<<<<<<< HEAD
-          <style>
-                .comment_container{
-                    display: flex;
-                    height: 70px;
-                    margin-bottom: 20px;
-                }
-                .comment_container > img{
-                    border-radius: 100%;
-    max-width: 100%;
-    margin-right: 20px;
-                }
-                #rating{
-                    display: block !important;
-                }
-                .stars{
-                    display: none;
-                }
-                .comment-form-rating{
-                    display: flex;
-                }
-                #submit{
-                    background: #01ecd4;
-    padding: 8px 20px;
-    border: navajowhite;
-                }
-                </style> 
-<?php
-if ( comments_open() || get_comments_number() ) :
-    comments_template($file = '/comments.php');
-endif;
-?>
-        </div>
-       
 
+            <?php
+            if (comments_open() || get_comments_number()):
+                comments_template($file = '/comments.php');
+            endif;
+            ?>
+        </div>
     </div>
-
-
-=======
-
-        </div>
->>>>>>> 3300daceaca8ba71eefc30cc150a53e21ae52cc3
+    </div>
     </div>
 </section>
 <!-- Product Details Section End -->
 
-<!-- Instagram Begin -->
-<div class="instagram">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-1.jpg">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-2.jpg">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-3.jpg">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-4.jpg">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-5.jpg">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-4 p-0">
-                <div class="instagram__item set-bg" data-setbg="img/instagram/insta-6.jpg">
-                    <div class="instagram__text">
-                        <i class="fa fa-instagram"></i>
-                        <a href="#">@ ashion_shop</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+    const menu_item_shop = document.querySelector('#menu_item_5249');
+    menu_item_shop.classList.add('active');
+</script>
+
 <?php get_footer(); ?>

@@ -7,20 +7,15 @@ add_action('wp_enqueue_scripts', 'my_files');
 add_action('woocommerce_product_options_general_product_data', 'woo_add_custom_general_fields');
 // Save Fields
 add_action('woocommerce_process_product_meta', 'woo_add_custom_general_fields_save');
-<<<<<<< HEAD
+
 add_action('woocommerce_new_product', 'notify_subscribers_on_new_product');
-=======
-<<<<<<< HEAD
-add_action('woocommerce_new_product', 'notify_subscribers_on_new_product');
-=======
->>>>>>> 6862e1161daf7a3548a7629159b6b5361275b636
->>>>>>> 3300daceaca8ba71eefc30cc150a53e21ae52cc3
 
 function my_theme_support()
 {
     // Register menu
     register_nav_menu('header-menu', __('Header menu'));
     add_theme_support('post-thumbnails');
+    add_theme_support('custom-logo');
     add_theme_support('title-tag');
     add_theme_support('woocommerce');
     add_theme_support('wc-product-gallery-zoom');
@@ -44,10 +39,7 @@ function my_files()
     wp_enqueue_script('script', get_theme_file_uri('/build/index.js'));
 
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 3300daceaca8ba71eefc30cc150a53e21ae52cc3
+
 add_action('wp_enqueue_scripts', 'enqueue_subscription_scripts');
 function enqueue_subscription_scripts() {
     wp_enqueue_script('custom-subscription-script', get_template_directory_uri() . '/js/custom-subscription-script.js', array('jquery'), '', true);
@@ -96,14 +88,6 @@ function notify_subscribers_on_new_product($product_id) {
     }
 }
 
-
-// Hook để thực hiện hành động khi thêm sản phẩm mới
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6862e1161daf7a3548a7629159b6b5361275b636
->>>>>>> 3300daceaca8ba71eefc30cc150a53e21ae52cc3
-
 function woo_add_custom_general_fields()
 {
     global $woocommerce, $post;
@@ -146,18 +130,18 @@ function wc_refresh_cart_count($fragments)
 }
 
 
-add_action('init', 'update_cart_quantity');
+// add_action('init', 'update_cart_quantity');
 
-function update_cart_quantity() {
-    if (isset($_POST['update_cart_qty'])) {
-        $product_id = $_POST['product_id'];
-        $quantity = $_POST['quantity'];
+// function update_cart_quantity() {
+//     if (isset($_POST['update_cart_qty'])) {
+//         $product_id = $_POST['product_id'];
+//         $quantity = $_POST['quantity'];
 
-        // Update the cart
-        WC()->cart->set_quantity($product_id, $quantity);
+//         // Update the cart
+//         WC()->cart->set_quantity($product_id, $quantity);
 
-        // Redirect back to the cart page
-        wp_safe_redirect(wc_get_cart_url());
-        exit();
-    }
-}
+//         // Redirect back to the cart page
+//         wp_safe_redirect(wc_get_cart_url());
+//         exit();
+//     }
+// }

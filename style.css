@@ -1,3 +1,21 @@
+a.primary-btn:hover{
+    color: #ca1515;
+    background-color: #fff;
+    border: 1px solid #ca1515;
+}
+
+a.site-btn:hover{
+    color: #ca1515;
+    background-color: #fff;
+    border: 1px solid #ca1515;
+}
+
+button.site-btn:hover{
+    color: #ca1515;
+    background-color: #fff;
+    border: 1px solid #ca1515;
+}
+
 a.added_to_cart.wc-forward {
     display: none;
 }
@@ -58,7 +76,7 @@ a.added_to_cart.wc-forward {
 .about-us-content p{
     font-size: 15px;
 }
-<<<<<<< HEAD
+
 .comment {
     background-color: #f5f5f5;
     padding: 10px;
@@ -84,5 +102,43 @@ a.added_to_cart.wc-forward {
     height: 50px;
     border-radius: 50%;
 }
-=======
->>>>>>> 3300daceaca8ba71eefc30cc150a53e21ae52cc3
+
+/* Purchase Order Page */
+.purchase-order td{
+    border-color: #dcdcdc;
+}
+
+.purchase-order .section-title{
+    margin-left: 9rem;
+    margin-bottom: 30px;
+}
+
+.woocommerce-column--shipping-address{
+    display: none !important;
+}
+
+.comment_container{
+    display: flex;
+    height: 70px;
+    margin-bottom: 20px;
+}
+.comment_container > img{
+    border-radius: 100%;
+max-width: 100%;
+margin-right: 20px;
+}
+#rating{
+    display: block !important;
+}
+.stars{
+    display: none;
+}
+.comment-form-rating{
+    display: flex;
+}
+#submit{
+    background: #01ecd4;
+padding: 8px 20px;
+border: navajowhite;
+}
+

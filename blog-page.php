@@ -1,10 +1,8 @@
 <?php
+
 /*Template Name: Blog Page */
-?>
 
-<?php get_header(); ?>
-
-<?php
+get_header();
 
 $args = array(
     'post_type' => 'post',
@@ -31,8 +29,6 @@ $posts = new WP_Query($args);
 
             <div class="col-md-3 bg-light shadow mx-4 my-3 p-3">
                 <a href="#">
-                    <!-- <img src="https://www.elle.vn/wp-content/uploads/2017/10/13/fast-fashion-vs-sustainable-fashion-xu-huong-nao-se-chien-thang-6.jpg"
-                        alt=""> -->
                     <img src="<?php echo get_the_post_thumbnail_url() ?>" alt="">
                 </a>
                 <div class="content mt-3">
@@ -44,7 +40,6 @@ $posts = new WP_Query($args);
                         <div class="date text-secondary mb-3 ms-auto">
                             <i class="fa-solid fa-calendar-days"></i>
                             <?php echo get_the_date() ?>
-                            <!-- November 7, 2023 -->
                         </div>
                     </div>
 
@@ -53,9 +48,7 @@ $posts = new WP_Query($args);
                     </a>
                     <div class="short-desc my-3">
                         <?php echo the_excerpt() ?>
-                        <!-- For many of us, we'll be doing plenty of traveling through... -->
                     </div>
-                    <!-- <a href="#" class="btn-read">READ ARTICLE <i class="fa-solid fa-greater-than ms-1"></i></a> -->
                     <a href="<?php echo esc_url(get_permalink()) ?>" class="btn btn-secondary btn-read">READ ARTICLE</a>
                 </div>
             </div>
@@ -65,7 +58,7 @@ $posts = new WP_Query($args);
 </div>
 
 <script>
-    const menu_item_blog = document.querySelector('.menu_item_blog');
+    const menu_item_blog = document.querySelector('#menu_item_5263');
     menu_item_blog.classList.add('active');
 </script>
 

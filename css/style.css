@@ -331,7 +331,7 @@ ol {
 }
 
 .header__logo img{
-	max-width: 40%;
+	max-width: 70%;
 	margin-top: 6px;
 }
 
@@ -866,7 +866,11 @@ ol {
 }
 
 .footer__logo {
-	margin-bottom: 20px;
+	margin-bottom: 15px;
+}
+
+.footer__logo img.custom-logo {
+	max-width: 40%;
 }
 
 .footer__payment a {

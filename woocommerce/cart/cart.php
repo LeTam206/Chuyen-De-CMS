@@ -4,7 +4,7 @@
 <div class="breadcrumb-option">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-8">
                 <div class="breadcrumb__links">
                     <a href="http://localhost/wordpress/"><i class="fa fa-home"></i> Home</a>
                     <span>Shopping cart</span>
@@ -43,7 +43,7 @@ if ($cart->is_empty()) {
                                     <?php foreach ($cart->get_cart() as $cart_item_key => $cart_item) {
                                         $product_id = $cart_item['product_id'];
                                         $product = wc_get_product($product_id);
-                                        echo $cart_item_key . 'ENDD ';
+                                        //echo $cart_item_key . 'ENDD ';
                                         $quantity = $cart_item['quantity'];
                                         $total_price_item = $product->price * $quantity;
                                         $total_price += $total_price_item; ?>

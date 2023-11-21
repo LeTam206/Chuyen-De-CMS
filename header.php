@@ -21,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bellefair&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap" rel="stylesheet">
 
+
     <!-- Css Styles -->
     <link rel="stylesheet" href="<?php echo get_theme_file_uri('css/bootstrap.min.css') ?>" type="text/css">
     <link rel="stylesheet" href="<?php echo get_theme_file_uri('css/font-awesome.min.css') ?>" type="text/css">
@@ -56,9 +57,10 @@
                 </a></li>
         </ul>
         <div class="offcanvas__logo">
-            <a href="#">
-                <img src="<?php echo get_theme_file_uri('images/logo2.png') ?>" alt="Logo Shoper"
-                    style="max-width: 40%">
+            <a href="<?php echo esc_url(home_url('/')) ?>">
+                <?php the_custom_logo(); ?>
+                <!-- <img src="<?php //echo get_theme_file_uri('images/logo2.png') ?>" alt="Logo Shoper"
+                    style="max-width: 40%"> -->
             </a>
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -75,22 +77,28 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="http://localhost/wordpress">
-                            <img src="<?php echo get_theme_file_uri('images/logo2.png') ?>" alt="Logo Shoper">
+                        <a href="<?php echo esc_url(home_url('/')) ?>">
+                            <?php the_custom_logo(); ?>
                         </a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7 text-center">
                     <nav class="header__menu">
-                        <?php wp_nav_menu(); ?>
-
-                        <!-- <ul>
-                            <li id="menu_item_home" class=""><a href="http://localhost/wordpress">Home</a></li>
-                            <li id="menu_item_shop" class=""><a href="http://localhost/wordpress/shop">Shop</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">About Us</a></li>
-                        </ul> -->
+                        <ul>
+                            <?php
+                            //wp_nav_menu();
+                            $menu_items = wp_get_nav_menu_items('header-menu');
+                            if ($menu_items) {
+                                foreach ($menu_items as $menu_item) { ?>
+                                    <li class="menu_item" id="menu_item_<?php echo $menu_item->ID ?>"><a
+                                            href="<?php echo $menu_item->url ?>">
+                                            <?php echo $menu_item->title ?>
+                                        </a></li>
+                                    <?php
+                                }
+                            }
+                            ?>
+                        </ul>
                     </nav>
                 </div>
                 <div class="col-lg-3">
@@ -128,5 +136,3 @@
         </div>
     </header>
     <!-- Header Section End -->
-
-    
